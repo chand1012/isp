@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>ISP Assignment 1</title>
+    <script>
+      function browserData() {
+        // get the browser agent
+        var agent = navigator.userAgent;
+        // set element with id 'browser-data' to the agent
+        document.getElementById("browser-data").innerHTML = agent;
+      }
+
+      function currentDate() {
+        var today = new Date();
+        // set element with id 'current-date' to the current date
+        document.getElementById("current-date").innerHTML = today;
+      }
+
+      // recursive factorial function
+      function factorial(n) {
+        if (n == 0) {
+          return 1;
+        } else {
+          return n * factorial(n - 1);
+        }
+      }
+
+      // factorial calculator prompt and response
+      function factorialCalc() {
+        var n = prompt("Enter a number to calculate its factorial: ", "8");
+        var result = factorial(parseFloat(n));
+        alert("The factorial of " + n + " is " + result);
+      }
+
+      // run functions when the page is ready
+      window.onload = function () {
+        browserData();
+        currentDate();
+      };
+    </script>
+  </head>
+  <body>
+    <h1>ISP Assignment 1</h1>
+    <h2>Chandler Lofland</h2>
+    <h3>
+      Browser data:
+      <div id="browser-data"></div>
+    </h3>
+    <h3>
+      Current date:
+      <div id="current-date"></div>
+    </h3>
+    <h3 id="date-finished"></h3>
+    <button onclick="factorialCalc()">Factorial Calculator</button>
+    <!--Embed the page video here-->
+  </body>
+</html>
