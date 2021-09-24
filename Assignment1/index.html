@@ -1,45 +1,17 @@
 <html>
   <head>
     <title>ISP Assignment 1</title>
-    <script>
-      function browserData() {
-        // get the browser agent
-        var agent = navigator.userAgent;
-        // set element with id 'browser-data' to the agent
-        document.getElementById("browser-data").innerHTML = agent;
-      }
-
-      function currentDate() {
-        var today = new Date();
-        // set element with id 'current-date' to the current date
-        document.getElementById("current-date").innerHTML = today;
-      }
-
-      // recursive factorial function
-      function factorial(n) {
-        if (n == 0) {
-          return 1;
-        } else {
-          return n * factorial(n - 1);
-        }
-      }
-
-      // factorial calculator prompt and response
-      function factorialCalc() {
-        var n = prompt("Enter a number to calculate its factorial: ", "8");
-        var result = factorial(parseFloat(n));
-        alert("The factorial of " + n + " is " + result);
-      }
-
-      // run functions when the page is ready
-      window.onload = function () {
-        browserData();
-        currentDate();
-      };
-    </script>
+    <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
     <h1>ISP Assignment 1</h1>
+    <p>
+      <small
+        >Information
+        <a href="http://www.cs.uakron.edu/~xiao/isp/isp-pa1.html">here</a
+        >.</small
+      >
+    </p>
     <h2>Chandler Lofland</h2>
     <h3>
       Browser data:
@@ -49,8 +21,19 @@
       Current date:
       <div id="current-date"></div>
     </h3>
-    <h3 id="date-finished"></h3>
+    <h3>
+      Date completed:
+      <div id="date-finished"></div>
+    </h3>
     <button onclick="factorialCalc()">Factorial Calculator</button>
     <!--Embed the page video here-->
+    <img
+      id="mouse-image"
+      src="https://camo.githubusercontent.com/72e5df59529a42423d671ba4c02bfb327d917517bfff18595c5e5dc17a5abece/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f68746d6c352e737667"
+      alt="mouse"
+      height="50px"
+      width="50px"
+      style="position: absolute"
+    />
   </body>
 </html>
