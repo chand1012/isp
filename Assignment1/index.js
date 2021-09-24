@@ -36,7 +36,7 @@ window.onload = function () {
   );
 };
 
-document.addEventListener("click", function () {
+document.addEventListener("click", function (event) {
   // move an image to where the mouse is
   var img = document.getElementById("mouse-image");
   var x = event.clientX;
@@ -44,5 +44,14 @@ document.addEventListener("click", function () {
   // subtract 25 to make it centered
   img.style.left = x - 25 + "px";
   img.style.top = y - 25 + "px";
-  console.log(x, y);
+});
+
+// update location when mouse moves
+document.addEventListener("mousemove", function (event) {
+  var img = document.getElementById("mouse-image2");
+  var x = event.clientX;
+  var y = event.clientY;
+  // subtract 25 to make it centered
+  img.style.left = x - 25 + "px";
+  img.style.top = y - 25 + "px";
 });
