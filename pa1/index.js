@@ -23,7 +23,7 @@ function factorial(n) {
 // factorial calculator prompt and response
 function factorialCalc() {
   var n = prompt("Enter a number to calculate its factorial: ", "8");
-  var result = factorial(parseFloat(n));
+  var result = factorial(parseInt(n));
   alert("The factorial of " + n + " is " + result);
 }
 
