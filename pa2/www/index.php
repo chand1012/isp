@@ -1,1 +1,3 @@
-../src/ZippyBooks.php
+<?php
+
+echo 'Hello World!';
