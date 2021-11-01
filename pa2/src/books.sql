@@ -11,7 +11,7 @@ create table books (
     title varchar(255) not null,
     price decimal(10,2) not null,
     quantity int not null,
-    flag boolean not null
+    flag boolean not null default 0
 );
 
 -- insert a textbook
