@@ -9,37 +9,47 @@ $conn = new PDO($database, $DBuser, $DBpass);
 
 // if post request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST["title"];
-    $price = $_POST["price"];
-    $quantity = $_POST["quantity"];
-    $flag = 0;
-    // check if flag is set
-    if (isset($_POST["flag"])) {
-        $flag = 1;
-    }
 
-    // if title is empty
-    if (empty($title)) {
-        $result = "Title is required";
-        echo $result;
+    // if the delete button was clicked
+    if (isset($_POST["delete"])) {
+        $sql = "DELETE FROM books WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $_POST["id"]);
+        $stmt->execute();
     } else {
-        // if price is empty
-        if (empty($price)) {
-            $result = "Price is required";
+
+        $title = $_POST["title"];
+        $price = $_POST["price"];
+        $quantity = $_POST["quantity"];
+        $flag = 0;
+        // check if flag is set
+        if (isset($_POST["flag"])) {
+            $flag = 1;
+        }
+
+        // if title is empty
+        if (empty($title)) {
+            $result = "Title is required";
             echo $result;
         } else {
-            // if quantity is empty
-            if (empty($quantity)) {
-                $result = "Quantity is required";
+            // if price is empty
+            if (empty($price)) {
+                $result = "Price is required";
                 echo $result;
             } else {
+                // if quantity is empty
+                if (empty($quantity)) {
+                    $result = "Quantity is required";
+                    echo $result;
+                } else {
+                    
+                    // if all fields are filled
+                    // post to the database
+                    $sql = "INSERT INTO books (title, price, quantity, flag) VALUES ('$title', '$price', '$quantity', '$flag')";
+                    $result = $conn->prepare($sql);
+                    $result->execute();
                 
-                // if all fields are filled
-                // post to the database
-                $sql = "INSERT INTO books (title, price, quantity, flag) VALUES ('$title', '$price', '$quantity', '$flag')";
-                $result = $conn->prepare($sql);
-                $result->execute();
-            
+                }
             }
         }
     }
@@ -56,6 +66,7 @@ $result->execute();
         <th>Price</th>
         <th>Quantity</th>
         <th>Discontinued?</th>
+        <th>Delete</th>
     </tr>
     <?php for($i=0; $row = $result->fetch(); $i++){ ?>
         <tr>
@@ -63,6 +74,11 @@ $result->execute();
             <td>$<?php echo $row['price']; ?></td>
             <td><?php echo $row['quantity']; ?></td>
             <td><?php echo $row['flag'] ? 'Yes' : 'No'; ?></td>
+            <td>
+                <form action="index.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                    <input type="submit" name="delete" value="Delete">
+                </form>
         </tr>
     <?php } ?>
 </table>
