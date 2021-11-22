@@ -14,11 +14,85 @@
         <td>Open the design window</td>
         <td><button onclick="openWin()">Open</button></td>
       </tr>
+      <!--1-->
       <tr>
         <td>Button</td>
         <td>Add a button to the design window</td>
         <td><button onclick="addButton()">Add</button></td>
       </tr>
+      <!--2-->
+      <tr>
+        <td>Text</td>
+        <td>Add text to the design window</td>
+        <td><button onclick="addText()">Add</button> <input id="text" type="text"> </input></td>
+      </tr>
+      <!--3-->
+      <tr>
+        <td>Image</td>
+        <td>Add an image to the design window</td>
+        <td><button onclick="addImage()">Add</button> <input id="image" type="text"/> width: <input id="width" type="text" /> height: <input id="height" type="text" /> </td>
+      </tr>
+      <!--4-->
+      <tr>
+        <td>Checkbox</td>
+        <td>Add a checkbox to the design window</td>
+        <td><button onclick="addCheckbox()">Add</button></td>
+      </tr>
+      <!--5-->
+      <tr>
+        <td>Select</td>
+        <td>Add a select box to the design window</td>
+        <td><button onclick="addSelect()">Add</button></td>
+      </tr>
+      <!--6-->
+      <tr>
+        <td>Select Option</td>
+        <td>Add an option to the select box</td>
+        <td><button onclick="addSelectOption()">Add</button> <input type="text" id="selectOption" /></td>
+      </tr>
+      <!--7-->
+      <tr>
+        <td>Table</td>
+        <td>Add a table to the design window</td>
+        <td><button onclick="addTable()">Add</button> Header: <input type="text" id="tableHeader" /></td>
+      </tr>
+      <!--8-->
+      <tr>
+        <td>Table Row</td>
+        <td>Add a row to the table</td>
+        <td><button onclick="addTableRow()">Add</button> Data: <input type="text" id="tableData"/></td>
+      </tr>
+      <!--9-->
+      <tr>
+        <td>TextBox</td>
+        <td>Add a textbox to the design window</td>
+        <td><button onclick="addTextBox()">Add</button></td>
+      </tr>
+      <!--10-->
+      <tr>
+        <td>TextArea</td>
+        <td>Add a textarea to the design window</td>
+        <td><button onclick="addTextArea()">Add</button></td>
+      </tr>
+      <!--11-->
+      <tr>
+        <td>Radio</td>
+        <td>Add a radio button to the design window</td>
+        <td><button onclick="addRadio()">Add</button></td>
+      </tr>
+      <!--12-->
+      <tr>
+        <td>Radio Option</td>
+        <td>Add an option to the radio button</td>
+        <td><button onclick="addRadioOption()">Add</button> <input type="text" id="radioOption" /></td>
+      </tr>
+      <!--13-->
+      <tr>
+        <td>Submit</td>
+        <td>Add a submit button to the design window</td>
+        <td><button onclick="addSubmit()">Add</button></td>
+      </tr>
+      
       <tr>
         <td>Examples</td>
         <td>Add a button to open the example window</td>
@@ -28,6 +102,11 @@
         <td>Close</td>
         <td>Close the design window</td>
         <td><button onclick="closeWindow()">Close</button></td>
+      </tr>
+      <tr>
+        <td>Clear</td>
+        <td>Clear the design window</td>
+        <td><button onclick="clearWindow()">Clear</button></td>
       </tr>
     </table>
 
@@ -46,7 +125,33 @@
       var page = "<p>ISP PA3</p>";
       var myWindow = null;
 
+      var selectBox = [];
+      var tableData = [];
+      var tableHeader = "";
+
       function openWin() {
+        if (selectBox.length > 0) {
+          page += "<select>";
+          for (var i = 0; i < selectBox.length; i++) {
+            page += "<option>" + selectBox[i] + "</option>";
+          }
+          page += "</select>";
+        }
+        if (tableData.length > 0) {
+          page += "<table border='1'><tr>";
+          for (var i = 0; i < tableData.length; i++) {
+            page += "<th>" + tableHeader + "</th>";
+          }
+          page += "</tr>";
+          for (var i = 0; i < tableData.length; i++) {
+            page += "<tr>";
+            for (var j = 0; j < tableData.length; j++) {
+              page += "<td>" + tableData[j] + "</td>";
+            }
+            page += "</tr>";
+          }
+          page += "</table>";
+        }
         if (myWindow != null) myWindow.close();
         myWindow = window.open("", "ISP PA3", "width=800,height=168");
         myWindow.document.write(page);
@@ -54,6 +159,43 @@
 
       function addButton() {
         page += "<button>A do nothing button</button>";
+      }
+
+      function addText() {
+        page += "<p>" + document.getElementById("text").value + "</p>";
+      }
+
+      function addImage() {
+        page += "<img src='" + document.getElementById("image").value + "' width='" + document.getElementById("width").value + "' height='" + document.getElementById("height").value + "'/>";
+      }
+
+      function addCheckbox() {
+        page += "<input type='checkbox'>";
+      }
+
+      function addTextBox() {
+        page += "<input type='text'/>";
+      }
+
+      function addTextArea() {
+        page += "<textarea></textarea>";
+      }
+
+      function addSelect() {
+        selectBox = [];
+      }
+
+      function addSelectOption() {
+        selectBox.push(document.getElementById("selectOption").value);
+      }
+
+      function addTable() {
+        tableData = [];
+        tableHeader = document.getElementById("tableHeader").value;
+      }
+
+      function addTableRow() {
+        tableData.push(document.getElementById("tableData").value);
       }
 
       function addExamples() {
@@ -67,6 +209,10 @@
 
       function closeWindow() {
         myWindow.close();
+      }
+
+      function clearWindow() {
+        page = "<p>ISP PA3</p> <script src='colorMode.js'/>";
       }
 
       function reference() {
