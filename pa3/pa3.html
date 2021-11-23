@@ -30,7 +30,7 @@
       <tr>
         <td>Image</td>
         <td>Add an image to the design window</td>
-        <td><button onclick="addImage()">Add</button> <input id="image" type="text"/> width: <input id="width" type="text" /> height: <input id="height" type="text" /> </td>
+        <td><button onclick="addImage()">Add</button> Image URL: <input id="image" type="text"/> width: <input id="width" type="text" /> height: <input id="height" type="text" /> </td>
       </tr>
       <!--4-->
       <tr>
@@ -78,21 +78,21 @@
       <tr>
         <td>Radio</td>
         <td>Add a radio button to the design window</td>
-        <td><button onclick="addRadio()">Add</button></td>
+        <td><button onclick="addRadio()">Add</button> <input type="text" id="radioLabel" /> </td>
       </tr>
       <!--12-->
-      <tr>
-        <td>Radio Option</td>
-        <td>Add an option to the radio button</td>
-        <td><button onclick="addRadioOption()">Add</button> <input type="text" id="radioOption" /></td>
-      </tr>
-      <!--13-->
       <tr>
         <td>Submit</td>
         <td>Add a submit button to the design window</td>
         <td><button onclick="addSubmit()">Add</button></td>
       </tr>
-      
+      <!--13-->
+      <tr>
+        <td>Alert Button</td>
+        <td>Add an alert button to the design window</td>
+        <td><button onclick="addAlert()">Add</button></td>
+      </tr>
+      <!--14-->
       <tr>
         <td>Examples</td>
         <td>Add a button to open the example window</td>
@@ -181,6 +181,20 @@
         page += "<textarea></textarea>";
       }
 
+      function addRadio() {
+        let labelName = document.getElementById("radioLabel").value;
+        page += "<input type='radio' name='radio' value='" + labelName + "' id=' " + labelName + "'/>";
+        page += "<label for='" + labelName + "'>" + labelName + "</label>";
+      }
+      
+      function addAlert() {
+        page += "<button onclick='alert(\"Hello World!\")'>Alert</button>";
+      }
+
+      function addSubmit() {
+        page += "<input type='submit' value='Submit'/>";
+      }
+
       function addSelect() {
         selectBox = [];
       }
@@ -248,6 +262,103 @@
         <th>None</th>
         <th>None</th>
       </tr>
+      <tr>
+        <td>Button</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Image</td>
+        <td>Width and Height</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Checkbox</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Select</td>
+        <td>None</td>
+        <td>Event Driven Programming</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Select Option</td>
+        <td>None</td>
+        <td>Event Driven Programming</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Table</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Table Row</td>
+        <td>None</td>
+        <td>Event Driven programming</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>TextBox</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>TextArea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Radio Button</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>Uses Label</td>
+      </tr>
+      <tr>
+        <td>Submit Button</td>
+        <td>None</td>
+        <td>Event-driven programming</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Alert Button</td>
+        <td>None</td>
+        <td>Event-driven programming</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Examples Button</td>
+        <td>None</td>
+        <td>Event-driven programming</td>
+        <td>None</td>
+        <td>None</td>
     </table>
   </body>
 </html>
